@@ -20,7 +20,7 @@ stages:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        containerRegistry: 'myofsacr'
+        containerRegistry: 'k8sacrofs'
         repository: '$(imageRepo)'
         command: 'buildAndPush'
         Dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
@@ -62,7 +62,7 @@ stages:
               namespace: 'default'
               secretType: 'dockerRegistry'
               secretName: '$(acrsecret)'
-              dockerRegistryEndpoint: 'myofsacr'
+              dockerRegistryEndpoint: 'k8sacrofs'
           - task: replacetokens@3
             displayName: Replace Tokens
             inputs:
